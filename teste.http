@@ -1,0 +1,2 @@
+GET http://api.football-data.org/v2/competitions/2152/matches?dateFrom=2022-10-16&dateTo=2022-10-30&status=SCHEDULED
+X-Auth-Token: 7f6e46464e7947af973449a40418e0e3
