@@ -2,7 +2,15 @@
 Clone o repositorio
 ```
 git clone https://github.com/lennercp/palpitando.git
-cd desen-web-django
+cd palpitando
+```
+Crie o ambiente virtual
+```
+python -m venv venv
+```
+ou
+```
+python3 -m venv venv
 ```
 Ative o ambiente virtual
 ```
