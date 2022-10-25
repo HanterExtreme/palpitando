@@ -71,7 +71,8 @@ class VerPalpite():
                 #palpite time de fora
                 Label(frame1, text=self.palpites_users[match][palpite][3]).grid(column=3, row=row)
                 #pontos
-                Label(frame1, text=self.calcular_pontos(r_casa, r_fora, int(p_casa), int(p_fora))).grid(column=4, row=row)
+                if r_casa:
+                    Label(frame1, text=self.calcular_pontos(r_casa, r_fora, int(p_casa), int(p_fora))).grid(column=4, row=row)
                 row += 1
         
         frameBottom = Frame(root, width=widthWin, height= 30)

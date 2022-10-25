@@ -14,13 +14,14 @@ class listarPalpites:
             if (game['match']['status']) == 'FINISHED':
                 self.resultados.append(game['match']['score']['fullTime']['homeTeam'])
                 self.resultados.append(game['match']['score']['fullTime']['awayTeam'])
-
-                self.times.append(game['match']['homeTeam']['name'])
-                self.times.append(game['match']['awayTeam']['name'])
-
-                self.ids_terminados.append(game['match']['id'])
             else:
-                pass
+                self.resultados.append('')
+                self.resultados.append('')
+            
+            self.times.append(game['match']['homeTeam']['name'])
+            self.times.append(game['match']['awayTeam']['name'])
+
+            self.ids_terminados.append(game['match']['id'])
         
         self.palpites_users = []
         for id in self.ids_terminados:
