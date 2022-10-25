@@ -3,5 +3,6 @@ __pycache__/
 venv/
 
 build/
+build/main
 dist/
 main.spec
