@@ -25,9 +25,9 @@ class Db:
         except Exception as e:
             print('deu erro', e)
 
-    def insert(self, match_id, name, homeTeam, awayTeam):
+    def insert(self, match_id, name, homeTeam, awayTeam, data):
         try:
-            self.cur.execute(f"INSERT INTO palpites VALUES ('{match_id}', '{name}', '{homeTeam}', '{awayTeam}')")
+            self.cur.execute(f"INSERT INTO palpites VALUES ('{match_id}', '{name}', '{homeTeam}', '{awayTeam}', '{data}')")
         except Exception as e:
             print(e)
     
@@ -46,7 +46,7 @@ class Db:
 
     def select_match(self):
         try:
-            self.cur.execute(f"SELECT DISTINCT match_id FROM palpites")
+            self.cur.execute(f"SELECT match_id, TO_CHAR(time, 'MM/DD/YY HH24:MI') FROM palpites GROUP BY match_id, time order by time ASC ")
             return (self.cur.fetchall())
         except Exception as e:
             print('deu erro', e)

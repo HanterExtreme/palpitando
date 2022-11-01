@@ -45,17 +45,18 @@ class VerPalpite():
             r_casa = self.resultados[match*2]
             r_fora = self.resultados[match*2+1]
             #time de casa
-            Label(frame1, text=f'{self.times[match*2]}', font=('Times',14)).grid(column=0, row=row, pady=(2,0), sticky=E)
-            Label(frame1, text=f'{r_casa}', font=('Times',14)).grid(column=1, row=row, pady=(2,0))
+            Label(frame1, text=f'{self.horarios_jogos[match]}', font=('Arial',8)).grid(column=0, row=row, pady=(2,0), sticky=E)
+            Label(frame1, text=f'{self.times[match*2]}', font=('Times',14)).grid(column=1, row=row, pady=(2,0), sticky=E)
+            Label(frame1, text=f'{r_casa}', font=('Times',14)).grid(column=2, row=row, pady=(2,0))
 
-            Label(frame1, text='x', font=('Times',14)).grid(column=2, row=row, pady=(2,0))
+            Label(frame1, text='x', font=('Times',14)).grid(column=3, row=row, pady=(2,0))
             #time de fora
-            Label(frame1, text=f'{r_fora}', font=('Times',14)).grid(column=3, row=row, pady=(2,0))
-            Label(frame1, text=f'{self.times[match*2+1]}', font=('Times',14)).grid(column=4, row=row, pady=(2,0), sticky=W)
+            Label(frame1, text=f'{r_fora}', font=('Times',14)).grid(column=4, row=row, pady=(2,0))
+            Label(frame1, text=f'{self.times[match*2+1]}', font=('Times',14)).grid(column=5, row=row, pady=(2,0), sticky=W)
 
             id = self.ids_terminados[match]
             deletar_button = Button(frame1, text='Apagar palpite', command=lambda id=id, row=row:deletar_jogo(id,row), bg='red', fg='black')
-            deletar_button.grid(column=5, row=row)
+            deletar_button.grid(column=6, row=row)
             self.buttons[row] = deletar_button
             row += 1
 
@@ -64,15 +65,15 @@ class VerPalpite():
                 p_fora = self.palpites_users[match][palpite][3]
 
                 #nome
-                Label(frame1, text=self.palpites_users[match][palpite][1]).grid(column=0, row=row)
+                Label(frame1, text=self.palpites_users[match][palpite][1]).grid(column=1, row=row)
                 #palpite time de casa
-                Label(frame1, text=self.palpites_users[match][palpite][2]).grid(column=1, row=row)
-                Label(frame1, text='x').grid(column=2, row=row)
+                Label(frame1, text=self.palpites_users[match][palpite][2]).grid(column=2, row=row)
+                Label(frame1, text='x').grid(column=3, row=row)
                 #palpite time de fora
-                Label(frame1, text=self.palpites_users[match][palpite][3]).grid(column=3, row=row)
+                Label(frame1, text=self.palpites_users[match][palpite][3]).grid(column=4, row=row)
                 #pontos
-                if r_casa:
-                    Label(frame1, text=self.calcular_pontos(r_casa, r_fora, int(p_casa), int(p_fora))).grid(column=4, row=row)
+                if r_casa != '':
+                    Label(frame1, text=self.calcular_pontos(r_casa, r_fora, int(p_casa), int(p_fora))).grid(column=5, row=row)
                 row += 1
         
         frameBottom = Frame(root, width=widthWin, height= 30)
@@ -97,4 +98,4 @@ class VerPalpite():
             self.buttons[row].destroy()
             del self.buttons[row]
 
-            Label(frame1, text='Palpite apagado', font=('Times',12)).grid(column=5, row=row, pady=(2,0))
+            Label(frame1, text='Palpite apagado', font=('Times',12)).grid(column=6, row=row, pady=(2,0))

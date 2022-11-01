@@ -49,8 +49,9 @@ class Palpite:
         else:
             row = 0
             for jogo in lista_jogos:
+                data = jogo[0]
                 #data e hora
-                Label(frame1, text=jogo[0]).grid(column=0, row=row)
+                Label(frame1, text=data).grid(column=0, row=row)
                 #rodada
                 Label(frame1, text=jogo[1]).grid(column=1, row=row)
 
@@ -64,7 +65,7 @@ class Palpite:
                 Label(frame1, text=jogo[3]).grid(column=6, row=row, sticky=W)
 
                 id = jogo[4]
-                Button(frame1, text='Palpitar', command=lambda id=id, row=row:autenticar_palpite(id,row)).grid(column=7, row=row)
+                Button(frame1, text='Palpitar', command=lambda id=id, row=row, data=data:autenticar_palpite(id,row, data)).grid(column=7, row=row)
 
                 row+=1
 
@@ -110,7 +111,7 @@ class Palpite:
                 self.l_result = Label(frame1, text=text, fg=fg)
                 self.l_result.grid(column= 8, row=self.row)
 
-        def autenticar_palpite(id, c):
+        def autenticar_palpite(id, c, data):
             self.row = c
             homeTeam = self.stringVars[c*2].get()
             awayTeam = self.stringVars[c*2+ 1].get()
@@ -135,7 +136,7 @@ class Palpite:
                             db.update(id, self.nome, homeTeam, awayTeam)
                         else:
                             print('add')
-                            db.insert(id, self.nome, homeTeam, awayTeam)
+                            db.insert(id, self.nome, homeTeam, awayTeam, data)
 
                     label_result('Palpite feito!','green')
 

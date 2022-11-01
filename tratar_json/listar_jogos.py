@@ -3,7 +3,7 @@ from datetime import date
 
 class listarJogos():
     def converter_horario(self, utc):
-        ano = utc[:4]
+        ano = utc[2:4]
         mes = utc[5:7]
         dia = utc[8:10]
         
